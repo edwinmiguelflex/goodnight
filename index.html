@@ -182,6 +182,42 @@
             transform: translate(-50%, -50%) scale(1);
             opacity: 1;
         }
+        
+        @media screen and (max-width: 600px) {
+    .message-box {
+        padding: 20px;
+        margin: 10px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .love-text {
+        font-size: 1.2rem;
+        padding: 0 10px;
+    }
+
+    .cross {
+        font-size: 2rem;
+    }
+
+    .bible-verse {
+        font-size: 1rem;
+    }
+
+    .hidden-love {
+        width: 90%;
+        padding: 20px;
+    }
+
+    body {
+        padding: 10px;
+        overflow: auto;
+    }
+}
+
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -258,9 +294,13 @@ function readVerse() {
         });
 
         // Revelar mensaje secreto
-        document.querySelector('.message-box').addEventListener('click', () => {
-            document.querySelector('.hidden-love').classList.toggle('visible-love');
-        });
+       document.querySelector('.message-box').addEventListener('click', (e) => {
+    // Si se hace clic dentro del botón de la bocina, no revelar mensaje
+    if (e.target.closest('button')) return;
+
+    document.querySelector('.hidden-love').classList.toggle('visible-love');
+});
+
 
         // Efecto de brillo dinámico
         const titles = document.querySelectorAll('h1');
